@@ -1,0 +1,65 @@
+
+
+ul{
+    list-style: none;
+}
+
+header{
+    position: sticky;
+    top: 0;
+}
+.logo{
+    color: var(--main-color);
+    font-size: 20px;
+}
+
+
+
+.sideBar{
+    min-height: 100vh;
+    width: 300px;
+    /* background-color: aqua; */
+    position: fixed;
+}
+
+.accordion-item{
+    margin-top: 10px;
+    background-color: #fff;
+    border: none;
+
+}
+.accordion-button{
+    height: 50px;
+    transition: ease .5s;
+    font-size: 17px;
+    color: #000;
+    
+}
+
+.accordion-button:hover,
+.accordion-button:focus{
+    background-color: var(--main-color);
+    color: rgb(255, 42, 42);
+}
+
+
+
+
+.accordion-body{
+    background-color: var(--main-color);
+    border-radius: 0 0 10px 10px;
+    margin: 0 8px;
+    
+}
+.accordion-body .btn{
+    color: #000;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.accordion-body .btn:hover,
+.accordion-body .btn:focus{
+    color: red;
+}
+
+

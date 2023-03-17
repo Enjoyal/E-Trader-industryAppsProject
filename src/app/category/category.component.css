@@ -1,0 +1,132 @@
+.home_section{
+    margin-left: 300px;
+    background-color: purple;
+    min-height: 80vh;
+}
+.container{
+    background-color: #fff;
+    min-height: 80vh;
+    
+}
+.all_categories{
+    height: 350px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+}
+.all_categories::-webkit-scrollbar{
+    display: none;
+}
+
+.row{
+    padding: 10px;
+}
+
+.cateImg{
+    object-fit: cover;
+}
+
+
+.add_btn{
+    background-color: darkblue;
+    color: #fff;
+    transition: ease .5s;
+    border: 2px solid transparent;
+
+}
+.add_btn:hover{
+    background-color: #fff;
+    color: darkblue;
+    border: 2px solid darkblue;
+}
+.more-icon{
+    width: 25px;
+    height: 25px;
+    padding-left: 5px;
+    padding-top: -15px;
+    transition: ease .5s;
+}
+.more-icon:hover{
+    background-color: #eee;
+}
+/* modal */
+#staticBackdrop{   
+    margin-top: 100px;
+}
+
+
+.input_box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid purple;
+
+}
+.input_box input{
+    /* width: 100%; */
+    background:transparent;
+    border:none;
+    outline: none;
+    color: #000;
+    padding: 5px 10px;
+
+}
+.input_box span{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    color: #808080;
+    transition:ease .5s ;
+    pointer-events: none;
+    font-size: 14px;
+
+}
+  
+
+.input_box input:valid ~ span,
+.input_box input:focus ~ span{
+    color: var(--blue-color);
+    transform: translateY(-25px);
+    font-size: 12px;
+    color: var(--main-color);
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    background-color:var(--blue-color);
+
+}
+
+
+.all_categories .row{
+    border: 1px solid transparent;
+    transition: ease .5s;
+}
+
+.all_categories .row:hover{
+    border: 1px solid var(--main-color);
+}
+
+.checkbox{
+    scale: 1.4;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+.dropdown-menu{
+    cursor: pointer;
+}
+.fa-trash{
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+    color: #808080;
+
+}
+.fa-check{
+    color: orange;
+}
+.fa-trash:hover{
+    background-color: #eee;
+    color: red;
+
+}

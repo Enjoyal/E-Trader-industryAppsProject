@@ -1,0 +1,44 @@
+
+<section class="login_section">
+    <div class="row">
+        <div class="col-4">
+        </div>
+    
+        <div class="login w-25 col-lg-4 col-sm-12 pb-3 ps-4 pe-4 text-center  border-0 rounded-4 ms-5 "> 
+            <h4 class="mt-4 mb-4 text-danger"><b>Welcome back!</b> </h4>
+          
+    
+            <form [formGroup]="loginForm" action="">
+    
+                <div class="form-outline text-start form-white mb-4 ">
+                    <div class="input_box" [ngStyle]="{'border-bottom':this.loginForm.get('uname')?.errors && this.loginForm.get('uname')?.touched ? '2px solid red': '2px solid purple'}">
+                        <input type="text" id="log_uname"  formControlName="uname"  [class.is-invalid]="loginForm.get('uname')?.invalid && loginForm.get('uname')?.touched"  placeholder=""  required="required"/>
+                        <span [ngStyle]="{'color':this.loginForm.get('uname')?.errors && this.loginForm.get('uname')?.touched ? 'red':'purple'}">
+                            Email Address
+                        </span>
+                    </div>
+        
+                    <div class="input_box mt-4" [ngStyle]="{'border-bottom':this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched ? '2px solid red': '2px solid purple'}">
+                        <input type="password" id="log_pswd" formControlName="pswd" [class.is-invalid]="loginForm.get('pswd')?.invalid && loginForm.get('pswd')?.touched" placeholder=""   required="required"/> 
+                        <span [ngStyle]="{'color':this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched ? 'red':'purple'}">
+                            Password
+                        </span>
+                    </div>
+        
+                  </div>
+    
+                <button (click)="login()" class="btn form-control mt-4 mb-2">Login</button><br>
+    
+                <div class="mt-2 mb-2">
+                    <p class="mb-0 "><a class="text-decoration-none text-dark fw-bold">Forgot password</a>
+                    </p>
+                </div>
+                
+            </form>
+    
+            </div>
+    
+        <div class="col-4">
+        </div>
+    </div>
+    </section>

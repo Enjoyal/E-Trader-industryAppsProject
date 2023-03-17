@@ -1,0 +1,125 @@
+<app-header></app-header>
+
+<section class="home_section mt-3 rounded-4 p-4 me-3">
+    <div class="container rounded-4  p-5">
+        <div class="contain">
+            <button class="btn add_btn ms-auto" (click)="onAdd()" style="float: right;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Add Category
+            </button><br><br>
+
+            <div class="row bg-light mb-5">
+                <div class="col-1">
+                <input type="checkbox" 
+                *ngIf="categories.length!=0"
+                class="checkbox"
+                (click)="onSelectall($event)">
+                </div>
+                <div class="col-10">
+                    <div class="dropend">
+                        <a class="dropdown-toggle text-decoration-none text-dark" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{option}}
+                        </a>
+                        <ul class="dropdown-menu mt-2">
+                          <li *ngIf="categories.length!=0"><a class="dropdown-item" (click)="allCategories()">All</a></li>
+                          <li *ngFor="let c of categoryOptions">
+                            <a (click)="sortByCategory(c.title)" class="dropdown-item" >{{c.title}}</a>
+                          </li>
+                          
+                        </ul>
+                      </div>
+                </div>
+
+                <div class="col-1">
+                    <div *ngIf="isCheckedall==true" class="col-1" >
+                        <i *ngIf="categories.length!=0" class=" fa fa-trash rounded-circle" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- All categories -->
+          <div class="all_categories px-4" *ngIf="categories.length!=0">
+            <div class="row shadow mt-3 rounded-2" *ngFor="let c of categories; let i=index" >
+              <div class="col-1 pt-2" >
+                <input type="checkbox"
+                class="checkbox"
+                [value]="c?.title"
+                [checked]="c?.isChecked"
+                (click)="onSelect($event)"
+                >
+              </div>
+              <div class="col-10">
+                  <img width="40" height="40" *ngIf="c.image" src="../assets/images/{{c.image}}" class="rounded-circle cateImg border border-secondary" alt="">
+                  <span class="text-capitalize ms-2"> {{c?.title}} </span>
+              </div>
+
+              <div class="col-1">
+                  <div class="dropdown deleteEditDropdown col-1" >
+                      <i class="more-icon mt-1 rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                          <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg></i>                        
+                      <ul class="dropdown-menu mt-2">
+                      <li><a class="dropdown-item text-danger" type="button" (click)="onDelete(i)"><i class="fa fa-trash text-danger"></i>Delete</a></li>
+                      <li><a class="dropdown-item text-secondary ps-4" (click)="onEdit(i)" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa-solid fa-pen-to-square"></i> &nbsp; Edit</a>
+                      </li>
+                      </ul>
+                  </div>
+              </div>
+
+          </div>
+        </div>
+
+        <!-- empty section -->
+
+        <div class="empty container-fluid" *ngIf="categories.length==0">
+          <div class=" text-center ">
+            <span class="rounded-pill bg-secondary text-white py-1 px-3">No categories yet!</span> 
+          </div>
+        </div>
+
+
+
+
+        </div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content px-4">
+        <div class="modal-header border-0">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Category details</h1>
+        </div>
+        <div class="modal-body ">
+          <div class="input_box">
+            <input class="" type="text" [(ngModel)]="cateName"  placeholder="Category Name">
+          </div><br>
+
+          <div class="">
+            <input *ngIf="isEdit==false"  [(ngModel)]="cateImg" (change)="setImage($event)" type="file"  >
+          </div>
+        </div><br><br>
+        <div class="modal-footer border-0 me-auto">
+          <button *ngIf="isEdit==false" (click)="AddCategory()" type="button" class="btn btn-dark"><i class="fa fa-plus"></i> Add</button>
+          <button *ngIf="isEdit==true" (click)="onUpdate()" type="button" class="btn btn-dark" data-bs-dismiss="modal"><i class="fa-solid fa-check "></i> Update </button>
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal2 -->
+<div class="modal fade" id="staticBackdrop2" *ngIf="categories.length!==0" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered">
+    <div class="modal-content px-4">
+      <div class="modal-body text-capitalize text-center ">
+        <div>Are you sure, do you want to delete all the selected categories?</div><br>
+        <button *ngIf="isEdit==false" (click)="onDeleteAll()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>&nbsp;
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> No </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+</section>

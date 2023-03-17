@@ -1,0 +1,68 @@
+
+.login_section{
+    background-color: purple;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+.login{
+    background-color: #fff;
+    margin-top: 200px;
+}
+
+.input_box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid purple;
+
+}
+.input_box input{
+    /* width: 100%; */
+    background:transparent;
+    border:none;
+    outline: none;
+    color: #000;
+    padding: 5px 10px;
+
+}
+.input_box span{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    color: #808080;
+    transition:ease .5s ;
+    pointer-events: none;
+    font-size: 14px;
+
+}
+  
+
+.input_box input:valid ~ span,
+.input_box input:focus ~ span{
+    color: var(--blue-color);
+    transform: translateY(-25px);
+    font-size: 12px;
+    color: var(--main-color);
+    border-radius: 5px;
+    letter-spacing: 1.5px;
+    background-color:var(--blue-color);
+
+}
+
+.btn{
+    background-color: purple;
+    color: #fff;
+    border: 2px solid transparent;
+    transition:ease .3s;
+
+}
+.btn:hover{
+    border: 2px solid var(--main-color);
+    background-color:white;
+    color: var(--main-color);
+
+}
